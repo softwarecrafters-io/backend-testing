@@ -1,5 +1,5 @@
-import {Factory} from "./infrastructure/factory";
+import {createServer} from "./infrastructure/server";
 
-const server = Factory.createServer();
+const server = createServer();
 const PORT = 3000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
