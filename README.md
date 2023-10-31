@@ -37,3 +37,6 @@ To run all tests (Integration and unit) in one operation, run:
 ```
 npm test
 ```
+
+## Solution
+The solution to the backend testing exercise can be found in the `final` branch of this repository. 
