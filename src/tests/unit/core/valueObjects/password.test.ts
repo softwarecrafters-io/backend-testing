@@ -1,42 +1,41 @@
 import {Password} from "../../../../core/valueObjects/password";
 
 describe('The Password', () => {
-
-    it('can be created from a strong password', () => {
+    it('creates a password when the given value meets the requirements for a strong password', () => {
         expect(Password.createFromPlainText('1234abcdABCD_')).toBeInstanceOf(Password);
     });
 
-    it('rejects a password that is too short', () => {
+    it('fails when the password is too short', () => {
         expect(() => {
             Password.createFromPlainText('1aA_');
         }).toThrow('Password is too short');
     });
 
-    it('rejects a password missing a number', () => {
+    it('fails when the password is missing a number', () => {
         expect(() => {
             Password.createFromPlainText('abcdABCD_');
         }).toThrow('Password must contain a number');
     });
 
-    it('rejects a password missing a lowercase', () => {
+    it('fails when the password is missing a lowercase', () => {
         expect(() => {
             Password.createFromPlainText('1234ABCD_');
         }).toThrow('Password must contain a lowercase letter');
     });
 
-    it('rejects a password missing an uppercase', () => {
+    it('fails when the password is missing an uppercase', () => {
         expect(() => {
             Password.createFromPlainText('1234abcd_');
         }).toThrow('Password must contain an uppercase letter');
     });
 
-    it('rejects a password missing an underscore', () => {
+    it('fails when the password is missing an underscore', () => {
         expect(() => {
             Password.createFromPlainText('1234abcdABCD');
         }).toThrow('Password must contain an underscore');
     });
 
-    it('rejects a password with multiple missing requirements', () => {
+    it('fails when the password is missing several requirements', () => {
         expect(() => {
             Password.createFromPlainText('abcd');
         }).toThrow('Password is too short, Password must contain a number, Password must contain an uppercase letter, Password must contain an underscore');
